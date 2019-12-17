@@ -1,0 +1,30 @@
+server:
+ port: 8080
+spring:
+  application:
+   name: consumer # 应⽤用名称
+eureka:
+ client:
+   registry-fetch-interval-seconds: 30 #生产环境不需要这个值
+   service-url: # EurekaServer地址
+    defaultZone: http://127.0.0.1:10086/eureka
+    instance:
+     prefer-ip-address: true # 当其它服务获取地址时提供ip⽽而不不是hostname
+     ip-address: 127.0.0.1 # 指定⾃自⼰己的ip信息，不不指定的话会⾃自⼰己寻找
+feign:
+ hystrix:
+  enabled: true # 开启Feign的熔断功能
+ compression:
+  request:
+   enabled: true # 开启请求压缩
+   mime-types: text/html,application/xml,application/json # 设置压缩的数据类型
+   min-request-size:  2048 # 设置触发压缩的⼤大⼩小下限
+  response:
+   enabled: true  # 开启响应压缩
+
+logging:
+ level:
+  com.cloudshop: debug
+ribbon:
+ eureka:
+  enabled: true
