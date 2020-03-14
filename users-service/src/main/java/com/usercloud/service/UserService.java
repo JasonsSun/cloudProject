@@ -14,4 +14,7 @@ public class UserService {
     public User queryById(Long id) {
         return this.userMapper.selectByPrimaryKey(id);
     }
+    public String queryUserNameById(Long id) {
+        return this.userMapper.selectByPrimaryKey(id).getName();
+    }
 }

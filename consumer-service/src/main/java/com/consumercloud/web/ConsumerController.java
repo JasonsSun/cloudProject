@@ -1,5 +1,6 @@
 package com.consumercloud.web;
 
+import com.consumercloud.consumer.pojo.JSONMessage;
 import com.consumercloud.consumer.pojo.User;
 import com.consumercloud.interfaceTack.UserFeignClient;
 import lombok.extern.slf4j.Slf4j;
@@ -52,8 +53,13 @@ public class ConsumerController {
 //    }
 
     @GetMapping("{id}")
-    public User queryById(@PathVariable("id") Long id) {
+    public JSONMessage queryById(@PathVariable("id") Long id) {
         return userFeignClient.queryById(id);
+    }
+
+    @GetMapping("/name/{id}")
+    public JSONMessage queryUserNameById(@PathVariable("id") Long id) {
+        return userFeignClient.queryUserNameById(id);
     }
 
 }
